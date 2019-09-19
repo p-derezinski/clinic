@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th=”http://www.thymeleaf.org” lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health First</title>
+</head>
+<body>
+
+<p>Tu będzie tworzony nowy pacjent</p>
+
+<div id="container">
+    <div id="intro">
+        <div class="width">
+            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+
+                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <tr>
+                        <td>REGISTER</td>
+                    </tr>
+                </table>
+
+                <table style="font-weight: bold; color: #f0f0f0">
+
+                    <form th:action="@{/patient}" th:method="post" th:object="${patient}">
+
+                        <tr>
+                            <td style="width: 200px">First name:</td>
+                            <td style="width: 150px"><input th:field="*{firstName}" type="text" class="form-control" placeholder="First name" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">Last name:</td>
+                            <td style="width: 150px"><input th:field="*{lastName}" type="text" class="form-control" placeholder="Last name" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">Street:</td>
+                            <td style="width: 150px"><input th:field="*{street}" type="text" class="form-control" placeholder="Street" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">ZIP code:</td>
+                            <td style="width: 150px"><input th:field="*{zipCode}" type="text" class="form-control" placeholder="ZIP code" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">City:</td>
+                            <td style="width: 150px"><input th:field="*{city}" type="text" class="form-control" placeholder="City" required></td>
+                        </tr>
+
+                        <tr>
+                            <td> </td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Create a new patient</button></td>
+                        </tr>
+
+                    </form>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

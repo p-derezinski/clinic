@@ -2,12 +2,50 @@
 <html xmlns:th=”http://www.thymeleaf.org” lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Health First</title>
 </head>
 <body>
 
-<p>Hello Clinic!</p>
+<p>Hello Clinic! :)</p>
 <p th:text="${clinicName}"></p>
+<div>
+    <a th:href="@{/create-patient}">Create a new patient</a>
+</div>
+<p>List of patients</p>
+
+<div id="container">
+    <div id="intro">
+        <div class="width">
+            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+
+                <table class="table table-striped" id="myTable">
+
+                    <thead class="thead-inverse" style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <tr>
+                        <th>FIRST NAME</th>
+                        <th>LAST NAME</th>
+                        <th>STREET</th>
+                        <th>ZIP CODE</th>
+                        <th>CITY</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="filterTable" style="color: #00264d;" th:each="patient : ${listOfPatients}">
+                    <tr>
+                        <td th:text="${patient.firstName}">First name</td>
+                        <td th:text="${patient.lastName}">Last name</td>
+                        <td th:text="${patient.street}">Street</td>
+                        <td th:text="${patient.zipCode}">ZIP code</td>
+                        <td th:text="${patient.city}">City</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
