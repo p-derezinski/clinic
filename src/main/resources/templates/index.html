@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <title>Health First</title>
 </head>
-<body>
+<body style="background-color: palegoldenrod">
 
-<p>Hello Clinic! :)</p>
+<p>Hello Clinic!!! :)</p>
 <p th:text="${clinicName}"></p>
+
 <div>
     <a th:href="@{/create-patient}">Create a new patient</a>
 </div>
-<p>List of patients</p>
+<div>
+    <a th:href="@{/create-doctor}">Create a new doctor</a>
+</div>
 
-<div id="container">
-    <div id="intro">
+<div>
+    <p>List of patients</p>
+</div>
+
+<div id="container1">
+    <div id="intro1">
         <div class="width">
-            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+            <div class="intro-content">
 
-                <table class="table table-striped" id="myTable">
+                <table class="table table-striped" id="myTable1">
 
-                    <thead class="thead-inverse" style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
                     <tr>
                         <th>FIRST NAME</th>
                         <th>LAST NAME</th>
@@ -30,13 +37,47 @@
                     </tr>
                     </thead>
 
-                    <tbody id="filterTable" style="color: #00264d;" th:each="patient : ${listOfPatients}">
+                    <tbody id="filterTable1" style="color: orangered;" th:each="patient : ${listOfPatients}">
                     <tr>
                         <td th:text="${patient.firstName}">First name</td>
                         <td th:text="${patient.lastName}">Last name</td>
                         <td th:text="${patient.street}">Street</td>
                         <td th:text="${patient.zipCode}">ZIP code</td>
                         <td th:text="${patient.city}">City</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>List of doctors</p>
+</div>
+
+<div id="container2">
+    <div id="intro2">
+        <div class="width">
+            <div class="intro-content">
+
+                <table class="table table-striped" id="myTable2">
+
+                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+                    <tr>
+                        <th>FIRST NAME</th>
+                        <th>LAST NAME</th>
+                        <th>MEDICAL SPECIALIZATION</th>
+                    </tr>
+                    </thead>
+
+                    <tbody id="filterTable2" style="color: orangered;" th:each="doctor : ${listOfDoctors}">
+                    <tr>
+                        <td th:text="${doctor.firstName}">First name</td>
+                        <td th:text="${doctor.lastName}">Last name</td>
+                        <td th:text="${doctor.medicalSpecialization}">Medical specialization</td>
                     </tr>
                     </tbody>
 

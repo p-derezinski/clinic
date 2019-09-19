@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<p>Creating a new patient</p>
+<p>Creating a new doctor</p>
 
 <div id="container">
     <div id="intro">
@@ -21,7 +21,7 @@
 
                 <table style="font-weight: bold; color: #f0f0f0">
 
-                    <form th:action="@{/patient}" th:method="post" th:object="${patient}">
+                    <form th:action="@{/doctor}" th:method="post" th:object="${doctor}">
 
                         <tr>
                             <td style="width: 200px">First name:</td>
@@ -32,21 +32,20 @@
                             <td style="width: 150px"><input th:field="*{lastName}" type="text" class="form-control" placeholder="Last name" required></td>
                         </tr>
                         <tr>
-                            <td style="width: 200px">Street:</td>
-                            <td style="width: 150px"><input th:field="*{street}" type="text" class="form-control" placeholder="Street" required></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 200px">ZIP code:</td>
-                            <td style="width: 150px"><input th:field="*{zipCode}" type="text" class="form-control" placeholder="ZIP code" required></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 200px">City:</td>
-                            <td style="width: 150px"><input th:field="*{city}" type="text" class="form-control" placeholder="City" required></td>
+                            <td style="width: 200px">Medical specialization:</td>
+                            <td style="width: 150px">
+                                <select th:field="*{medicalSpecialization}" class="form-control">
+                                    <option th:each="medicalSpecialization : ${T(pl.derezinski.clinic.model.MedicalSpecialization).values()}"
+                                            th:value="${medicalSpecialization}"
+                                            th:text="${medicalSpecialization}">
+                                    </option>
+                                </select>
+                            </td>
                         </tr>
 
                         <tr>
                             <td> </td>
-                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Create a new patient</button></td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Create a new doctor</button></td>
                         </tr>
 
                     </form>
