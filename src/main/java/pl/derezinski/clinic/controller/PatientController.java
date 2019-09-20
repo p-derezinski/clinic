@@ -47,6 +47,20 @@ public class PatientController {
         return "patient";
     }
 
+    // obsługa aktualizacji danych pacjenta
+    @PutMapping("/patient/{id}")
+    public String updatePatient(@PathVariable("id") Long id, @ModelAttribute("patientToView") @Valid Patient patient) {
+        patientService.update(patient);
+//        Patient patientToUpdate = patientService.getFirstById(id);
+//        patientToUpdate.setFirstName(patient.getFirstName());
+//        patientToUpdate.setLastName(patient.getLastName());
+//        patientToUpdate.setStreet(patient.getStreet());
+//        patientToUpdate.setZipCode(patient.getZipCode());
+//        patientToUpdate.setCity(patient.getCity());
+//        patientService.update(patientToUpdate);
+        return "redirect:/patient/{id}";
+    }
+
     // obsługa usuwania pacjenta
     @DeleteMapping("/patient/{id}")
     public String deletePatient(@PathVariable("id") Long id) {
