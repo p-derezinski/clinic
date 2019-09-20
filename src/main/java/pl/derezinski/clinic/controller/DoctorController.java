@@ -47,6 +47,13 @@ public class DoctorController {
         return "doctor";
     }
 
+    // obsługa aktualizacji danych doktora
+    @PutMapping("/doctor/{id}")
+    public String updateDoctor(@PathVariable("id") Long id, @ModelAttribute("doctorToView") @Valid Doctor doctor) {
+        doctorService.update(doctor);
+        return "redirect:/doctor/{id}";
+    }
+
     // obsługa usuwania doktora
     @DeleteMapping("/doctor/{id}")
     public String deleteDoctor(@PathVariable("id") Long id) {

@@ -31,6 +31,10 @@ public class DoctorService {
         return doctorRepository.findFirstById(id);
     }
 
+    public void update(Doctor doctor) {
+        doctorRepository.save(doctor);
+    }
+
     public void deleteById(Long id) {
         doctorRepository.deleteById(id);
     }

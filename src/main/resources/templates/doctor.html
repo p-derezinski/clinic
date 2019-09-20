@@ -21,18 +21,49 @@
 
                 <table style="font-weight: bold; color: #f0f0f0">
 
-                    <tr>
-                        <td style="color: #00264d">First name:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.firstName}">First name</td>
-                    </tr>
-                    <tr>
-                        <td style="color: #00264d">Last name:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.lastName}">Last name</td>
-                    </tr>
-                    <tr>
-                        <td style="color: #00264d">Medical specialization:</td>
-                        <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.medicalSpecialization}">Medical specialization</td>
-                    </tr>
+                    <form th:action="@{'/doctor/' + ${doctorToView.id}}" th:method="put" th:object="${doctorToView}">
+
+                        <tr>
+                            <td style="color: #00264d">First name:</td>
+                            <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.firstName}">First name</td>
+                            <td style="width: 150px"></td>
+                            <td style="width: 150px">
+                                <input th:field="*{firstName}" type="text" class="form-control" placeholder="Change first name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #00264d">Last name:</td>
+                            <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.lastName}">Last name</td>
+                            <td style="width: 150px"></td>
+                            <td style="width: 150px">
+                                <input th:field="*{lastName}" type="text" class="form-control" placeholder="Change last name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #00264d">Medical specialization:</td>
+                            <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.medicalSpecialization}">Medical specialization</td>
+                            <td style="width: 150px"></td>
+                            <td style="width: 150px">
+                                <select th:field="*{medicalSpecialization}" class="form-control">
+                                    <option th:each="medicalSpecialization : ${T(pl.derezinski.clinic.model.MedicalSpecialization).values()}"
+                                            th:value="${medicalSpecialization}"
+                                            th:text="${medicalSpecialization}">
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: #00264d"></td>
+                            <td style="color: #f0f0f0"></td>
+                            <td style="width: 150px"></td>
+                            <td>
+                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
+                                    UPDATE
+                                </button>
+                            </td>
+                        </tr>
+
+                    </form>
 
                 </table>
 
