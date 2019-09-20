@@ -31,4 +31,8 @@ public class PatientService {
     public Patient getFirstById(Long id) {
         return patientRepository.findFirstById(id);
     }
+
+    public void deleteById(Long id) {
+        patientRepository.deleteById(id);
+    }
 }

@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.derezinski.clinic.controller.dto.PatientDto;
 import pl.derezinski.clinic.service.PatientService;
 
@@ -29,7 +27,7 @@ public class PatientController {
         return "createPatient";
     }
 
-    // obsługa wysłanego formularza
+    // obsługa wysłanego formularza (i utworzenia nowego pacjenta)
     @PostMapping("/patient")
     public String createPatient(@ModelAttribute("patient") @Valid PatientDto patientDto,
                                 BindingResult bindingResult) {
@@ -37,6 +35,13 @@ public class PatientController {
             return "createPatient";
         }
         patientService.savePatient(patientDto);
+        return "redirect:/";
+    }
+
+    // obsługa usuwania pacjenta
+    @DeleteMapping("/patient/{id}")
+    public String deletePatient(@PathVariable("id") Long id) {
+        patientService.deleteById(id);
         return "redirect:/";
     }
 }

@@ -30,4 +30,8 @@ public class DoctorService {
     public Doctor getFirstById(Long id) {
         return doctorRepository.findFirstById(id);
     }
+
+    public void deleteById(Long id) {
+        doctorRepository.deleteById(id);
+    }
 }
