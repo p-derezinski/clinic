@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.derezinski.clinic.controller.dto.DoctorDto;
+import pl.derezinski.clinic.model.Doctor;
 import pl.derezinski.clinic.service.DoctorService;
 
 import javax.validation.Valid;
@@ -36,6 +37,14 @@ public class DoctorController {
         }
         doctorService.saveDoctor(doctorDto);
         return "redirect:/";
+    }
+
+    // obsługa wyświetlania doktora
+    @GetMapping("/doctor/{id}")
+    public String showDoctor(@PathVariable("id") Long id, Model model) {
+        Doctor doctorToView = doctorService.getFirstById(id);
+        model.addAttribute("doctorToView", doctorToView);
+        return "doctor";
     }
 
     // obsługa usuwania doktora

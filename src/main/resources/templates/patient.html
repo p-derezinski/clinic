@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th=”http://www.thymeleaf.org” lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health First</title>
+</head>
+<body>
+
+<p>Patient's section</p>
+
+<div id="container">
+    <div id="intro">
+        <div class="width">
+            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+
+                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <tr>
+                        <td>Personal data</td>
+                    </tr>
+                </table>
+
+                <table style="font-weight: bold; color: #f0f0f0">
+
+                    <tr>
+                        <td style="color: #00264d">First name:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${patientToView.firstName}">First name</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #00264d">Last name:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${patientToView.lastName}">Last name</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #00264d">Street:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${patientToView.street}">Street</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #00264d">ZIP code:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${patientToView.zipCode}">ZIP code</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #00264d">City:</td>
+                        <td style="color: #f0f0f0; font-weight: bold" th:text="${patientToView.city}">City</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

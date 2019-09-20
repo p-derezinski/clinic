@@ -34,6 +34,7 @@
                         <th>STREET</th>
                         <th>ZIP CODE</th>
                         <th>CITY</th>
+                        <th>PATIENT'S SECTION</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -45,6 +46,13 @@
                         <td th:text="${patient.street}">Street</td>
                         <td th:text="${patient.zipCode}">ZIP code</td>
                         <td th:text="${patient.city}">City</td>
+                        <td>
+                            <a th:href="@{'/patient/' + ${patient.id}}">
+                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
+                                    GO
+                                </button>
+                            </a>
+                        </td>
                         <td>
                             <form th:action="@{'/patient/' + ${patient.id}}" th:method="delete">
                                 <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
@@ -78,6 +86,7 @@
                         <th>FIRST NAME</th>
                         <th>LAST NAME</th>
                         <th>MEDICAL SPECIALIZATION</th>
+                        <th>DOCTOR'S SECTION</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -87,6 +96,13 @@
                         <td th:text="${doctor.firstName}">First name</td>
                         <td th:text="${doctor.lastName}">Last name</td>
                         <td th:text="${doctor.medicalSpecialization}">Medical specialization</td>
+                        <td>
+                            <a th:href="@{'/doctor/' + ${doctor.id}}">
+                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
+                                    GO
+                                </button>
+                            </a>
+                        </td>
                         <td>
                             <form th:action="@{'/doctor/' + ${doctor.id}}" th:method="delete">
                                 <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
