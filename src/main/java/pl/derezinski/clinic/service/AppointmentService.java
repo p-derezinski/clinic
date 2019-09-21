@@ -10,6 +10,8 @@ import pl.derezinski.clinic.repository.AppointmentRepository;
 import pl.derezinski.clinic.repository.DoctorRepository;
 import pl.derezinski.clinic.repository.PatientRepository;
 
+import java.util.List;
+
 @Service
 public class AppointmentService {
 
@@ -30,5 +32,9 @@ public class AppointmentService {
         Appointment appointment = new Appointment(appointmentDto.getAppointmentDate(), appointmentDto.getAppointmentTime(),
                 appointmentDto.getLocation(), doctor, patient);
         appointmentRepository.save(appointment);
+    }
+
+    public List<Appointment> getAll() {
+        return appointmentRepository.findAll();
     }
 }

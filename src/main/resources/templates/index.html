@@ -120,5 +120,59 @@
     </div>
 </div>
 
+<div>
+    <p>List of appointments</p>
+</div>
+
+<div id="container3">
+    <div id="intro3">
+        <div class="width">
+            <div class="intro-content">
+
+                <table class="table table-striped" id="myTable3">
+
+                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+                    <tr>
+                        <th>APPOINTMENT DATE</th>
+                        <th>APPOINTMENT TIME</th>
+                        <th>LOCATION</th>
+                        <th>DOCTOR</th>
+                        <th>PATIENT</th>
+<!--                        <th>DOCTOR'S SECTION</th>-->
+<!--                        <th>ACTION</th>-->
+                    </tr>
+                    </thead>
+
+                    <tbody id="filterTable3" style="color: orangered;" th:each="appointment : ${listOfAppointments}">
+                    <tr>
+                        <td th:text="${appointment.appointmentDate}">Appointment date</td>
+                        <td th:text="${appointment.appointmentTime}">Appointment time</td>
+                        <td th:text="${appointment.location}">Location</td>
+                        <td th:text="${appointment.doctor.firstName + ' ' + appointment.doctor.lastName}">Doctor</td>
+                        <td th:text="${appointment.patient.firstName + ' ' + appointment.patient.lastName}">Patient</td>
+<!--                        <td>-->
+<!--                            <a th:href="@{'/doctor/' + ${doctor.id}}">-->
+<!--                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">-->
+<!--                                    GO-->
+<!--                                </button>-->
+<!--                            </a>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <form th:action="@{'/doctor/' + ${doctor.id}}" th:method="delete">-->
+<!--                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">-->
+<!--                                    DELETE-->
+<!--                                </button>-->
+<!--                            </form>-->
+<!--                        </td>-->
+                    </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
