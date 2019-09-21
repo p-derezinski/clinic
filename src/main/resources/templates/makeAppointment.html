@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th=”http://www.thymeleaf.org” lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health First</title>
+</head>
+<body>
+
+<p style="color: darkgreen; font-weight: bold" th:text="${patientToView.firstName + ' ' + patientToView.lastName}"></p>
+<p>You are making a new appointment</p>
+
+<div id="container">
+    <div id="intro">
+        <div class="width">
+            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+
+                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
+                    <tr>
+                        <td>Insert required data below</td>
+                    </tr>
+                </table>
+
+                <table style="font-weight: bold; color: #f0f0f0">
+
+                    <form th:action="@{/appointment}" th:method="post" th:object="${appointment}">
+
+                        <tr>
+                            <td style="width: 200px">Appointment date:</td>
+                            <td style="width: 150px"><input th:field="*{appointmentDate}" type="date" class="form-control" placeholder="Appointment date" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">Appointment time:</td>
+                            <td style="width: 150px"><input th:field="*{appointmentTime}" type="text" class="form-control" placeholder="Appointment time" required></td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">Location:</td>
+                            <td style="width: 150px">
+                                <select th:field="*{location}" class="form-control">
+                                    <option th:each="location : ${T(pl.derezinski.clinic.model.Location).values()}"
+                                            th:value="${location}"
+                                            th:text="${location}">
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width: 200px">ID of the doctor:</td>
+                            <td style="width: 150px"><input th:field="*{doctorId}" type="number" class="form-control" placeholder="ID of the doctor" required></td>
+                        </tr>
+
+                        <tr>
+                            <td style="visibility: hidden"><input name="patientId" th:value="${patientToView.id}" type="hidden"></td>
+                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Make an appointment</button></td>
+                        </tr>
+
+                    </form>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

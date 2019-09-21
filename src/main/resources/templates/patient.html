@@ -11,7 +11,7 @@
 <div id="container">
     <div id="intro">
         <div class="width">
-            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+            <div class="intro-content" style="background-color: rgba(105, 155, 186, 0.9)">
 
                 <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
                     <tr>
@@ -81,6 +81,14 @@
             </div>
         </div>
     </div>
+</div>
+
+<div>
+    <a th:href="@{'/make-appointment/' + ${patientToView.id}}">
+        <button style="background-color: yellow; width: 300px; border-color: #208000; font-weight: bold">
+            MAKE AN APPOINTMENT
+        </button>
+    </a>
 </div>
 
 </body>
