@@ -6,6 +6,7 @@ import pl.derezinski.clinic.controller.dto.PatientDto;
 import pl.derezinski.clinic.model.Patient;
 import pl.derezinski.clinic.repository.PatientRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,6 +31,15 @@ public class PatientService {
 
     public Patient getFirstById(Long id) {
         return patientRepository.findFirstById(id);
+    }
+
+    public List<Long> getAllIdNumbers() {
+        List<Patient> listOfPatients = getAll();
+        List<Long> listOfIdNumbers = new ArrayList<>();
+        for (Patient patient : listOfPatients) {
+            listOfIdNumbers.add(patient.getId());
+        }
+        return listOfIdNumbers;
     }
 
     public void update(Patient patient) {

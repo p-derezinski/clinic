@@ -19,11 +19,17 @@ public class AppointmentService {
     PatientRepository patientRepository;
     DoctorRepository doctorRepository;
 
+    PatientService patientService;
+    DoctorService doctorService;
+
     @Autowired
-    public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository, DoctorRepository doctorRepository) {
+    public AppointmentService(AppointmentRepository appointmentRepository, PatientRepository patientRepository, DoctorRepository doctorRepository,
+                              PatientService patientService, DoctorService doctorService) {
         this.appointmentRepository = appointmentRepository;
         this.patientRepository = patientRepository;
         this.doctorRepository = doctorRepository;
+        this.patientService = patientService;
+        this.doctorService = doctorService;
     }
 
     public void saveAppointment(AppointmentDto appointmentDto, Long patientId) {
@@ -36,5 +42,19 @@ public class AppointmentService {
 
     public List<Appointment> getAll() {
         return appointmentRepository.findAll();
+    }
+
+    public List<Appointment> getAllForExistingPatientsAndDoctors() {
+        List<Appointment> listOfAppointments = appointmentRepository.findAll();
+        List<Appointment> listOfAppointmentsToModify = appointmentRepository.findAll();
+        List<Long> listOfPatientIdNumbers = patientService.getAllIdNumbers();
+        List<Long> listOfDoctorIdNumbers = doctorService.getAllIdNumbers();
+        for (Appointment appointment : listOfAppointments) {
+            if (!listOfPatientIdNumbers.contains(appointment.getPatient().getId())
+                || !listOfDoctorIdNumbers.contains(appointment.getDoctor().getId())) {
+                listOfAppointmentsToModify.remove(appointment);
+            }
+        }
+        return listOfAppointmentsToModify;
     }
 }

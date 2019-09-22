@@ -32,7 +32,7 @@ public class MainController {
         model.addAttribute("clinicName", "Health First");
         List<Patient> listOfPatients = patientService.getAll();
         List<Doctor> listOfDoctors = doctorService.getAll();
-        List<Appointment> listOfAppointments = appointmentService.getAll();
+        List<Appointment> listOfAppointments = appointmentService.getAllForExistingPatientsAndDoctors();
         model.addAttribute("listOfPatients", listOfPatients);
         model.addAttribute("listOfDoctors", listOfDoctors);
         model.addAttribute("listOfAppointments", listOfAppointments);
