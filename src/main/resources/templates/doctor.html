@@ -4,71 +4,67 @@
     <meta charset="UTF-8">
     <title>Health First</title>
 </head>
-<body>
+<body style="background-color: cornflowerblue">
 
-<p>Doctor's section</p>
+<p style="font-weight: bold">Doctor's section</p>
 
-<div id="container">
-    <div id="intro">
-        <div class="width">
-            <div class="intro-content" style="float: left; background-color: rgba(105, 155, 186, 0.9)">
+<div class="width">
+    <div class="intro-content" style="float: left; background-color: cornflowerblue">
 
-                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
-                    <tr>
-                        <td>Personal data</td>
-                    </tr>
-                </table>
+        <table style="color: #00264f; font-weight: bold; background-color: #2469b3">
+            <tr>
+                <td>Personal data</td>
+            </tr>
+        </table>
 
-                <table style="font-weight: bold; color: #f0f0f0">
+        <table style="font-weight: bold; color: #f0f0f0">
 
-                    <form th:action="@{'/doctor/' + ${doctorToView.id}}" th:method="put" th:object="${doctorToView}">
+            <form th:action="@{'/doctor/' + ${doctorToView.id}}" th:method="put" th:object="${doctorToView}">
 
-                        <tr>
-                            <td style="color: #00264d">First name:</td>
-                            <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.firstName}">First name</td>
-                            <td style="width: 150px"></td>
-                            <td style="width: 150px">
-                                <input th:field="*{firstName}" type="text" class="form-control" placeholder="Change first name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #00264d">Last name:</td>
-                            <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.lastName}">Last name</td>
-                            <td style="width: 150px"></td>
-                            <td style="width: 150px">
-                                <input th:field="*{lastName}" type="text" class="form-control" placeholder="Change last name">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #00264d">Medical specialization:</td>
-                            <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.medicalSpecialization}">Medical specialization</td>
-                            <td style="width: 150px"></td>
-                            <td style="width: 150px">
-                                <select th:field="*{medicalSpecialization}" class="form-control">
-                                    <option th:each="medicalSpecialization : ${T(pl.derezinski.clinic.model.MedicalSpecialization).values()}"
-                                            th:value="${medicalSpecialization}"
-                                            th:text="${medicalSpecialization}">
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="color: #00264d"></td>
-                            <td style="color: #f0f0f0"></td>
-                            <td style="width: 150px"></td>
-                            <td>
-                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
-                                    UPDATE
-                                </button>
-                            </td>
-                        </tr>
+                <tr>
+                    <td style="color: #00264d">First name:</td>
+                    <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.firstName}">First name</td>
+                    <td style="width: 150px"></td>
+                    <td style="width: 150px">
+                        <input th:field="*{firstName}" type="text" class="form-control" placeholder="Change first name">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #00264d">Last name:</td>
+                    <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.lastName}">Last name</td>
+                    <td style="width: 150px"></td>
+                    <td style="width: 150px">
+                        <input th:field="*{lastName}" type="text" class="form-control" placeholder="Change last name">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: #00264d">Medical specialization:</td>
+                    <td style="color: #f0f0f0; font-weight: bold" th:text="${doctorToView.medicalSpecialization}">Medical specialization</td>
+                    <td style="width: 150px"></td>
+                    <td style="width: 150px">
+                        <select th:field="*{medicalSpecialization}" class="form-control">
+                            <option th:each="medicalSpecialization : ${T(pl.derezinski.clinic.model.MedicalSpecialization).values()}"
+                                    th:value="${medicalSpecialization}"
+                                    th:text="${medicalSpecialization}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td style="width: 150px"></td>
+                    <td>
+                        <button style="background-color: indianred; width: 70px; border-color: #208000; font-weight: bold">
+                            UPDATE
+                        </button>
+                    </td>
+                </tr>
 
-                    </form>
+            </form>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
 </div>
 

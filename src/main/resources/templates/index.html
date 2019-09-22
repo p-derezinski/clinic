@@ -6,150 +6,148 @@
 </head>
 <body style="background-color: palegoldenrod">
 
-<p>Hello Clinic!!! :)</p>
-<p th:text="${clinicName}"></p>
+<h3 style="color: darkgreen; font-weight: bold" th:text="${clinicName}"></h3>
+<p style="font-weight: bold">Welcome!</p>
 
 <div>
-    <a th:href="@{/create-patient}">Create a new patient</a>
+    <a th:href="@{/create-patient}">
+        <button style="background-color: yellow; width: 200px; border-color: #208000; font-weight: bold">
+            Create a new patient
+        </button>
+    </a>
 </div>
 <div>
-    <a th:href="@{/create-doctor}">Create a new doctor</a>
+    <a th:href="@{/create-doctor}">
+        <button style="background-color: yellow; width: 200px; border-color: #208000; font-weight: bold">
+            Create a new doctor
+        </button>
+    </a>
 </div>
 
 <div>
-    <p>List of patients</p>
+    <p style="font-weight: bold">List of patients</p>
 </div>
 
-<div id="container1">
-    <div id="intro1">
-        <div class="width">
-            <div class="intro-content">
+<div class="width">
+    <div class="intro-content">
 
-                <table class="table table-striped" id="myTable1">
+        <table class="table table-striped" id="myTable1">
 
-                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
-                    <tr>
-                        <th>FIRST NAME</th>
-                        <th>LAST NAME</th>
-                        <th>STREET</th>
-                        <th>ZIP CODE</th>
-                        <th>CITY</th>
-                        <th>PATIENT'S SECTION</th>
-                        <th>ACTION</th>
-                    </tr>
-                    </thead>
+            <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+            <tr>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>STREET</th>
+                <th>ZIP CODE</th>
+                <th>CITY</th>
+                <th>PATIENT'S SECTION</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
 
-                    <tbody id="filterTable1" style="color: orangered;" th:each="patient : ${listOfPatients}">
-                    <tr>
-                        <td th:text="${patient.firstName}">First name</td>
-                        <td th:text="${patient.lastName}">Last name</td>
-                        <td th:text="${patient.street}">Street</td>
-                        <td th:text="${patient.zipCode}">ZIP code</td>
-                        <td th:text="${patient.city}">City</td>
-                        <td>
-                            <a th:href="@{'/patient/' + ${patient.id}}">
-                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
-                                    GO
-                                </button>
-                            </a>
-                        </td>
-                        <td>
-                            <form th:action="@{'/patient/' + ${patient.id}}" th:method="delete">
-                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
-                                    DELETE
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    </tbody>
+            <tbody id="filterTable1" style="color: orangered;" th:each="patient : ${listOfPatients}">
+            <tr>
+                <td th:text="${patient.firstName}">First name</td>
+                <td th:text="${patient.lastName}">Last name</td>
+                <td th:text="${patient.street}">Street</td>
+                <td th:text="${patient.zipCode}">ZIP code</td>
+                <td th:text="${patient.city}">City</td>
+                <td>
+                    <a th:href="@{'/patient/' + ${patient.id}}">
+                        <button style="background-color: greenyellow; width: 175px; border-color: #208000; font-weight: bold">
+                            GO
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <form th:action="@{'/patient/' + ${patient.id}}" th:method="delete">
+                        <button style="background-color: indianred; width: 175px; border-color: #208000; font-weight: bold">
+                            DELETE
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
 </div>
 
 <div>
-    <p>List of doctors</p>
+    <p style="font-weight: bold">List of doctors</p>
 </div>
 
-<div id="container2">
-    <div id="intro2">
-        <div class="width">
-            <div class="intro-content">
+<div class="width">
+    <div class="intro-content">
 
-                <table class="table table-striped" id="myTable2">
+        <table class="table table-striped" id="myTable2">
 
-                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
-                    <tr>
-                        <th>FIRST NAME</th>
-                        <th>LAST NAME</th>
-                        <th>MEDICAL SPECIALIZATION</th>
-                        <th>DOCTOR'S SECTION</th>
-                        <th>ACTION</th>
-                    </tr>
-                    </thead>
+            <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+            <tr>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>MEDICAL SPECIALIZATION</th>
+                <th>DOCTOR'S SECTION</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
 
-                    <tbody id="filterTable2" style="color: orangered;" th:each="doctor : ${listOfDoctors}">
-                    <tr>
-                        <td th:text="${doctor.firstName}">First name</td>
-                        <td th:text="${doctor.lastName}">Last name</td>
-                        <td th:text="${doctor.medicalSpecialization}">Medical specialization</td>
-                        <td>
-                            <a th:href="@{'/doctor/' + ${doctor.id}}">
-                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
-                                    GO
-                                </button>
-                            </a>
-                        </td>
-                        <td>
-                            <form th:action="@{'/doctor/' + ${doctor.id}}" th:method="delete">
-                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">
-                                    DELETE
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    </tbody>
+            <tbody id="filterTable2" style="color: orangered;" th:each="doctor : ${listOfDoctors}">
+            <tr>
+                <td th:text="${doctor.firstName}">First name</td>
+                <td th:text="${doctor.lastName}">Last name</td>
+                <td th:text="${doctor.medicalSpecialization}">Medical specialization</td>
+                <td>
+                    <a th:href="@{'/doctor/' + ${doctor.id}}">
+                        <button style="background-color: greenyellow; width: 175px; border-color: #208000; font-weight: bold">
+                            GO
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <form th:action="@{'/doctor/' + ${doctor.id}}" th:method="delete">
+                        <button style="background-color: indianred; width: 175px; border-color: #208000; font-weight: bold">
+                            DELETE
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
 </div>
 
 <div>
-    <p>List of appointments</p>
+    <p style="font-weight: bold">List of appointments</p>
 </div>
 
-<div id="container3">
-    <div id="intro3">
-        <div class="width">
-            <div class="intro-content">
+<div class="width">
+    <div class="intro-content">
 
-                <table class="table table-striped" id="myTable3">
+        <table class="table table-striped" id="myTable3">
 
-                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
-                    <tr>
-                        <th>APPOINTMENT DATE</th>
-                        <th>APPOINTMENT TIME</th>
-                        <th>LOCATION</th>
-                        <th>DOCTOR</th>
-                        <th>PATIENT</th>
+            <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+            <tr>
+                <th>APPOINTMENT DATE</th>
+                <th>APPOINTMENT TIME</th>
+                <th>LOCATION</th>
+                <th>DOCTOR</th>
+                <th>PATIENT</th>
 <!--                        <th>DOCTOR'S SECTION</th>-->
 <!--                        <th>ACTION</th>-->
-                    </tr>
-                    </thead>
+            </tr>
+            </thead>
 
-                    <tbody id="filterTable3" style="color: orangered;" th:each="appointment : ${listOfAppointments}">
-                    <tr>
-                        <td th:text="${appointment.appointmentDate}">Appointment date</td>
-                        <td th:text="${appointment.appointmentTime}">Appointment time</td>
-                        <td th:text="${appointment.location}">Location</td>
-                        <td th:text="${appointment.doctor.firstName + ' ' + appointment.doctor.lastName}">Doctor</td>
-                        <td th:text="${appointment.patient.firstName + ' ' + appointment.patient.lastName}">Patient</td>
+            <tbody id="filterTable3" style="color: orangered;" th:each="appointment : ${listOfAppointments}">
+            <tr>
+                <td th:text="${appointment.appointmentDate}">Appointment date</td>
+                <td th:text="${appointment.appointmentTime}">Appointment time</td>
+                <td th:text="${appointment.location}">Location</td>
+                <td th:text="${appointment.doctor.firstName + ' ' + appointment.doctor.lastName}">Doctor</td>
+                <td th:text="${appointment.patient.firstName + ' ' + appointment.patient.lastName}">Patient</td>
 <!--                        <td>-->
 <!--                            <a th:href="@{'/doctor/' + ${doctor.id}}">-->
 <!--                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">-->
@@ -164,13 +162,11 @@
 <!--                                </button>-->
 <!--                            </form>-->
 <!--                        </td>-->
-                    </tr>
-                    </tbody>
+            </tr>
+            </tbody>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
 </div>
 

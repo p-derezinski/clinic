@@ -4,62 +4,62 @@
     <meta charset="UTF-8">
     <title>Health First</title>
 </head>
-<body>
+<body style="background-color: cornflowerblue">
 
 <p style="color: darkgreen; font-weight: bold" th:text="${patientToView.firstName + ' ' + patientToView.lastName}"></p>
 <p style="color: red; font-weight: bold" th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
 <p>You are making a new appointment</p>
 
-<div id="container">
-    <div id="intro">
-        <div class="width">
-            <div class="intro-content" style="background-color: rgba(105, 155, 186, 0.9)">
+<div class="width">
+    <div class="intro-content" style="background-color: cornflowerblue">
 
-                <table style="color: #00264f; font-weight: bold; background-color: rgba(0, 96, 128, 0.7)">
-                    <tr>
-                        <td>Insert required data below</td>
-                    </tr>
-                </table>
+        <table style="color: #00264f; font-weight: bold; background-color: #2469b3">
+            <tr>
+                <td>Insert required data below</td>
+            </tr>
+        </table>
 
-                <table style="font-weight: bold; color: #f0f0f0">
+        <table style="font-weight: bold; color: #f0f0f0">
 
-                    <form th:action="@{/appointment}" th:method="post" th:object="${appointment}">
+            <form th:action="@{/appointment}" th:method="post" th:object="${appointment}">
 
-                        <tr>
-                            <td style="width: 200px">Appointment date:</td>
-                            <td style="width: 150px"><input th:field="*{appointmentDate}" type="date" class="form-control" placeholder="Appointment date" required></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 200px">Appointment time:</td>
-                            <td style="width: 150px"><input th:field="*{appointmentTime}" type="text" class="form-control" placeholder="Appointment time" required></td>
-                        </tr>
-                        <tr>
-                            <td style="width: 200px">Location:</td>
-                            <td style="width: 150px">
-                                <select th:field="*{location}" class="form-control">
-                                    <option th:each="location : ${T(pl.derezinski.clinic.model.Location).values()}"
-                                            th:value="${location}"
-                                            th:text="${location}">
-                                    </option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style="width: 200px">ID of the doctor:</td>
-                            <td style="width: 150px"><input th:field="*{doctorId}" type="number" class="form-control" placeholder="ID of the doctor" required></td>
-                        </tr>
+                <tr>
+                    <td style="width: 200px">Appointment date:</td>
+                    <td style="width: 150px"><input th:field="*{appointmentDate}" type="date" class="form-control" placeholder="Appointment date" required></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px">Appointment time:</td>
+                    <td style="width: 150px"><input th:field="*{appointmentTime}" type="text" class="form-control" placeholder="Appointment time" required></td>
+                </tr>
+                <tr>
+                    <td style="width: 200px">Location:</td>
+                    <td style="width: 150px">
+                        <select th:field="*{location}" class="form-control">
+                            <option th:each="location : ${T(pl.derezinski.clinic.model.Location).values()}"
+                                    th:value="${location}"
+                                    th:text="${location}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px">ID of the doctor:</td>
+                    <td style="width: 150px"><input th:field="*{doctorId}" type="number" class="form-control" placeholder="ID of the doctor" required></td>
+                </tr>
 
-                        <tr>
-                            <td style="visibility: hidden"><input name="patientId" th:value="${patientToView.id}" type="hidden"></td>
-                            <td style="width: 200px; padding: 0px"><button type="submit" class="button-log-reg">Make an appointment</button></td>
-                        </tr>
+                <tr>
+                    <td style="visibility: hidden"><input name="patientId" th:value="${patientToView.id}" type="hidden"></td>
+                    <td>
+                        <button type="submit" class="button-log-reg" style="background-color: yellow; width: 200px; border-color: #208000; font-weight: bold">
+                            Make an appointment
+                        </button>
+                    </td>
+                </tr>
 
-                    </form>
+            </form>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
 </div>
 
@@ -67,35 +67,31 @@
     <p>List of doctors</p>
 </div>
 
-<div id="container2">
-    <div id="intro2">
-        <div class="width">
-            <div class="intro-content">
+<div class="width">
+    <div class="intro-content">
 
-                <table class="table table-striped" id="myTable2">
+        <table class="table table-striped" id="myTable2">
 
-                    <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
-                    <tr>
-                        <th>FIRST NAME</th>
-                        <th>LAST NAME</th>
-                        <th>MEDICAL SPECIALIZATION</th>
-                        <th>DOCTOR'S ID</th>
-                    </tr>
-                    </thead>
+            <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+            <tr>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>MEDICAL SPECIALIZATION</th>
+                <th>DOCTOR'S ID</th>
+            </tr>
+            </thead>
 
-                    <tbody id="filterTable2" style="color: orangered;" th:each="doctor : ${listOfDoctors}">
-                    <tr>
-                        <td th:text="${doctor.firstName}">First name</td>
-                        <td th:text="${doctor.lastName}">Last name</td>
-                        <td th:text="${doctor.medicalSpecialization}">Medical specialization</td>
-                        <td style="font-weight: bold" th:text="${doctor.id}">ID</td>
-                    </tr>
-                    </tbody>
+            <tbody id="filterTable2" style="color: orangered;" th:each="doctor : ${listOfDoctors}">
+            <tr>
+                <td th:text="${doctor.firstName}">First name</td>
+                <td th:text="${doctor.lastName}">Last name</td>
+                <td th:text="${doctor.medicalSpecialization}">Medical specialization</td>
+                <td style="font-weight: bold" th:text="${doctor.id}">ID</td>
+            </tr>
+            </tbody>
 
-                </table>
+        </table>
 
-            </div>
-        </div>
     </div>
 </div>
 
