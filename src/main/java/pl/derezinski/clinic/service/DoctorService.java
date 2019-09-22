@@ -6,6 +6,7 @@ import pl.derezinski.clinic.controller.dto.DoctorDto;
 import pl.derezinski.clinic.model.Doctor;
 import pl.derezinski.clinic.repository.DoctorRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,6 +30,15 @@ public class DoctorService {
 
     public Doctor getFirstById(Long id) {
         return doctorRepository.findFirstById(id);
+    }
+
+    public List<Long> getAllIdNumbers() {
+        List<Doctor> listOfDoctors = getAll();
+        List<Long> listOfIdNumbers = new ArrayList<>();
+        for (Doctor doctor : listOfDoctors) {
+            listOfIdNumbers.add(doctor.getId());
+        }
+        return listOfIdNumbers;
     }
 
     public void update(Doctor doctor) {
