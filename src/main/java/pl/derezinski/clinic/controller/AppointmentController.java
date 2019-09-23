@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.derezinski.clinic.controller.dto.AppointmentDto;
+import pl.derezinski.clinic.model.Appointment;
 import pl.derezinski.clinic.model.Doctor;
 import pl.derezinski.clinic.model.Patient;
 import pl.derezinski.clinic.service.AppointmentService;
@@ -51,6 +52,30 @@ public class AppointmentController {
             return addAttributesToTheModelAndReturnMakeAppointment(patientId, model);
         }
         appointmentService.saveAppointment(appointmentDto, patientId);
+        return "redirect:/";
+    }
+
+    // obsługa wyświetlania wizyty
+    @GetMapping("/appointment/{id}")
+    public String showAppointment(@PathVariable("id") Long id, Model model) {
+        Appointment appointmentToView = appointmentService.getFirstById(id);
+        model.addAttribute("appointmentToView", appointmentToView);
+        return "appointment";
+    }
+
+    // obsługa aktualizacji danych wizyty
+    @PutMapping("/appointment/{id}")
+    public String updateAppointment(@PathVariable("id") Long id, @RequestParam(name = "newAppointmentTime") String newAppointmentTime) {
+        Appointment appointmentToUpdate = appointmentService.getFirstById(id);
+        appointmentToUpdate.setAppointmentTime(newAppointmentTime);
+        appointmentService.update(appointmentToUpdate);
+        return "redirect:/appointment/{id}";
+    }
+
+    // obsługa usuwania wizyty
+    @DeleteMapping("/appointment/{id}")
+    public String deleteAppointment(@PathVariable("id") Long id) {
+        appointmentService.deleteById(id);
         return "redirect:/";
     }
 

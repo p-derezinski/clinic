@@ -136,8 +136,8 @@
                 <th>LOCATION</th>
                 <th>DOCTOR</th>
                 <th>PATIENT</th>
-<!--                        <th>DOCTOR'S SECTION</th>-->
-<!--                        <th>ACTION</th>-->
+                <th>DETAILS</th>
+                <th>ACTION</th>
             </tr>
             </thead>
 
@@ -154,20 +154,20 @@
 <!--                <td th:if="${appointment.patient.firstName == null}"-->
 <!--                    th:text="${'This patient has been deleted.'}">Patient</td>-->
 
-<!--                        <td>-->
-<!--                            <a th:href="@{'/doctor/' + ${doctor.id}}">-->
-<!--                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">-->
-<!--                                    GO-->
-<!--                                </button>-->
-<!--                            </a>-->
-<!--                        </td>-->
-<!--                        <td>-->
-<!--                            <form th:action="@{'/doctor/' + ${doctor.id}}" th:method="delete">-->
-<!--                                <button style="background-color: #33cc00; width: 70px; border-color: #208000; font-weight: bold">-->
-<!--                                    DELETE-->
-<!--                                </button>-->
-<!--                            </form>-->
-<!--                        </td>-->
+                <td>
+                    <a th:href="@{'/appointment/' + ${appointment.id}}">
+                        <button style="background-color: greenyellow; width: 175px; border-color: #208000; font-weight: bold">
+                            GO
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <form th:action="@{'/appointment/' + ${appointment.id}}" th:method="delete">
+                        <button style="background-color: indianred; width: 175px; border-color: #208000; font-weight: bold">
+                            DELETE
+                        </button>
+                    </form>
+                </td>
             </tr>
             </tbody>
 

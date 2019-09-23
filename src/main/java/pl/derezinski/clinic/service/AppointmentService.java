@@ -57,4 +57,16 @@ public class AppointmentService {
         }
         return listOfAppointmentsToModify;
     }
+
+    public Appointment getFirstById(Long id) {
+        return appointmentRepository.findFirstById(id);
+    }
+
+    public void update(Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
+
+    public void deleteById(Long id) {
+        appointmentRepository.deleteById(id);
+    }
 }
