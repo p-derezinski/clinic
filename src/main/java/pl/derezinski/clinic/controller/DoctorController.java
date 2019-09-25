@@ -21,14 +21,14 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    // wejście na stronę umożliwiającą utworzenie doktora
+    // entering the page that allows to create a new doctor
     @GetMapping("/create-doctor")
     public String createDoctor(Model model) {
         model.addAttribute("doctor", new DoctorDto());
         return "createDoctor";
     }
 
-    // obsługa wysłanego formularza (i utworzenia nowego doktora)
+    // handling the creating of a new doctor
     @PostMapping("/doctor")
     public String createDoctor(@ModelAttribute("doctor") @Valid DoctorDto doctorDto,
                                 BindingResult bindingResult) {
@@ -39,7 +39,7 @@ public class DoctorController {
         return "redirect:/";
     }
 
-    // obsługa wyświetlania doktora
+    // handling the displaying of a doctor
     @GetMapping("/doctor/{id}")
     public String showDoctor(@PathVariable("id") Long id, Model model) {
         Doctor doctorToView = doctorService.getFirstById(id);
@@ -47,14 +47,14 @@ public class DoctorController {
         return "doctor";
     }
 
-    // obsługa aktualizacji danych doktora
+    // handling the updating of doctor data
     @PutMapping("/doctor/{id}")
     public String updateDoctor(@PathVariable("id") Long id, @ModelAttribute("doctorToView") @Valid Doctor doctor) {
         doctorService.update(doctor);
         return "redirect:/doctor/{id}";
     }
 
-    // obsługa usuwania doktora
+    // handling the deleting of a doctor
     @DeleteMapping("/doctor/{id}")
     public String deleteDoctor(@PathVariable("id") Long id) {
         doctorService.deleteById(id);

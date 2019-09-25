@@ -21,14 +21,14 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    // wejście na stronę umożliwiającą utworzenie pacjenta
+    // entering the page that allows to create a new patient
     @GetMapping("/create-patient")
     public String createPatient(Model model) {
         model.addAttribute("patient", new PatientDto());
         return "createPatient";
     }
 
-    // obsługa wysłanego formularza (i utworzenia nowego pacjenta)
+    // handling the creating of a new patient
     @PostMapping("/patient")
     public String createPatient(@ModelAttribute("patient") @Valid PatientDto patientDto,
                                 BindingResult bindingResult) {
@@ -39,7 +39,7 @@ public class PatientController {
         return "redirect:/";
     }
 
-    // obsługa wyświetlania pacjenta
+    // handling the displaying of a patient
     @GetMapping("/patient/{id}")
     public String showPatient(@PathVariable("id") Long id, Model model) {
         Patient patientToView = patientService.getFirstById(id);
@@ -47,21 +47,14 @@ public class PatientController {
         return "patient";
     }
 
-    // obsługa aktualizacji danych pacjenta
+    // handling the updating of patient data
     @PutMapping("/patient/{id}")
     public String updatePatient(@PathVariable("id") Long id, @ModelAttribute("patientToView") @Valid Patient patient) {
         patientService.update(patient);
-//        Patient patientToUpdate = patientService.getFirstById(id);
-//        patientToUpdate.setFirstName(patient.getFirstName());
-//        patientToUpdate.setLastName(patient.getLastName());
-//        patientToUpdate.setStreet(patient.getStreet());
-//        patientToUpdate.setZipCode(patient.getZipCode());
-//        patientToUpdate.setCity(patient.getCity());
-//        patientService.update(patientToUpdate);
         return "redirect:/patient/{id}";
     }
 
-    // obsługa usuwania pacjenta
+    // handling the deleting of a patient
     @DeleteMapping("/patient/{id}")
     public String deletePatient(@PathVariable("id") Long id) {
         patientService.deleteById(id);

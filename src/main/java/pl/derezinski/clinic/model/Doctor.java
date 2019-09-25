@@ -15,8 +15,8 @@ import javax.persistence.Id;
 @Entity
 public class Doctor {
 
-    @Id                                               // PRIMARY KEY
-    @GeneratedValue(strategy = GenerationType.AUTO)   // AUTO_INCREMENT
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstName;
     private String lastName;

@@ -13,8 +13,8 @@ import java.time.LocalDate;
 @Entity
 public class Appointment {
 
-    @Id                                               // PRIMARY KEY
-    @GeneratedValue(strategy = GenerationType.AUTO)   // AUTO_INCREMENT
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private LocalDate appointmentDate;
     private String appointmentTime;

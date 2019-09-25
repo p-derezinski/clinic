@@ -30,13 +30,13 @@ public class AppointmentController {
         this.doctorService = doctorService;
     }
 
-    // wejście na stronę umożliwiającą umówienie wizyty
+    // entering the page that allows to make an appointment
     @GetMapping("/make-appointment/{id}")
     public String makeAppointment(@PathVariable("id") Long id, Model model) {
         return addAttributesToTheModelAndReturnMakeAppointment(id, model);
     }
 
-    // obsługa wysłanego formularza (i umówienia nowej wizyty)
+    // handling the making of a new appointment
     @PostMapping("/appointment")
     public String makeAppointment(@ModelAttribute("appointment") @Valid AppointmentDto appointmentDto,
                                   @RequestParam(name = "patientId") Long patientId,
@@ -45,7 +45,7 @@ public class AppointmentController {
         if (bindingResult.hasErrors()) {
             return "makeAppointment";
         }
-        // obsługa sytuacji, gdy w formularzu wybrano nieistniejące ID doktora
+        // handling the case when an ID of a non-existing doctor was entered in the form
         if (!doctorService.getAllIdNumbers().contains(appointmentDto.getDoctorId())) {
             String errorMessage = "There is no doctor with the chosen ID. Please insert data again.";
             model.addAttribute("errorMessage", errorMessage);
@@ -55,7 +55,7 @@ public class AppointmentController {
         return "redirect:/";
     }
 
-    // obsługa wyświetlania wizyty
+    // handling the displaying of an appointment
     @GetMapping("/appointment/{id}")
     public String showAppointment(@PathVariable("id") Long id, Model model) {
         Appointment appointmentToView = appointmentService.getFirstById(id);
@@ -63,7 +63,7 @@ public class AppointmentController {
         return "appointment";
     }
 
-    // obsługa aktualizacji danych wizyty
+    // handling the updating of appointment data
     @PutMapping("/appointment/{id}")
     public String updateAppointment(@PathVariable("id") Long id, @RequestParam(name = "newAppointmentTime") String newAppointmentTime) {
         Appointment appointmentToUpdate = appointmentService.getFirstById(id);
@@ -72,14 +72,14 @@ public class AppointmentController {
         return "redirect:/appointment/{id}";
     }
 
-    // obsługa usuwania wizyty
+    // handling the deleting of an appointment
     @DeleteMapping("/appointment/{id}")
     public String deleteAppointment(@PathVariable("id") Long id) {
         appointmentService.deleteById(id);
         return "redirect:/";
     }
 
-    // obsługa wyświetlania wszystkich wizyt
+    // handling the displaying of all appointments
     @GetMapping("/appointments/patient")
     public String showAllAppointments(Model model) {
         List<Appointment> listOfAppointments = appointmentService.getAll();
@@ -87,7 +87,7 @@ public class AppointmentController {
         return "appointmentsAll";
     }
 
-    // obsługa wyświetlania wizyt wybranego pacjenta
+    // handling the displaying of appointments of a selected patient
     @GetMapping("/appointments/patient/{id}")
     public String showAppointmentsByPatient(@PathVariable("id") Long patientId, Model model) {
         List<Appointment> listOfAppointments = appointmentService.getAllByPatient(patientId);
