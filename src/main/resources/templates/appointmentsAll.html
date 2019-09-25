@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th=”http://www.thymeleaf.org” lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Health First</title>
+</head>
+<body style="background-color: cornflowerblue">
+
+<p style="font-weight: bold">List of all appointments, including invalid appointments (with deleted patient or doctor)</p>
+
+<div class="width">
+    <div class="intro-content">
+
+        <table class="table table-striped" id="myTable3">
+
+            <thead class="thead-inverse" style="color: palegoldenrod; font-weight: bold; background-color: orangered">
+            <tr>
+                <th>APPOINTMENT ID</th>
+                <th>APPOINTMENT DATE</th>
+                <th>APPOINTMENT TIME</th>
+                <th>LOCATION</th>
+                <th>ACTION</th>
+            </tr>
+            </thead>
+
+            <tbody id="filterTable3" style="color: orangered;" th:each="appointment : ${listOfAppointments}">
+            <tr>
+                <td th:text="${appointment.id}">Appointment id</td>
+                <td th:text="${appointment.appointmentDate}">Appointment date</td>
+                <td th:text="${appointment.appointmentTime}">Appointment time</td>
+                <td th:text="${appointment.location}">Location</td>
+                <td>
+                    <form th:action="@{'/appointment/' + ${appointment.id}}" th:method="delete">
+                        <button style="background-color: indianred; width: 175px; border-color: #208000; font-weight: bold">
+                            DELETE
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

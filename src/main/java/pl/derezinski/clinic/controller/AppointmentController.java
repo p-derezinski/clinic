@@ -79,6 +79,14 @@ public class AppointmentController {
         return "redirect:/";
     }
 
+    // obsługa wyświetlania wszystkich wizyt
+    @GetMapping("/appointments/patient")
+    public String showAllAppointments(Model model) {
+        List<Appointment> listOfAppointments = appointmentService.getAll();
+        model.addAttribute("listOfAppointments", listOfAppointments);
+        return "appointmentsAll";
+    }
+
     private String addAttributesToTheModelAndReturnMakeAppointment(Long id, Model model) {
         model.addAttribute("appointment", new AppointmentDto());
         Patient patientToView = patientService.getFirstById(id);

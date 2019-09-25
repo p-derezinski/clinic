@@ -10,13 +10,11 @@
 <p style="font-weight: bold">Welcome!</p>
 
 <div>
-    <a th:href="@{/create-patient}">
+    <a style="float: left" th:href="@{/create-patient}">
         <button style="background-color: yellow; width: 200px; border-color: #208000; font-weight: bold">
             Create a new patient
         </button>
     </a>
-</div>
-<div>
     <a th:href="@{/create-doctor}">
         <button style="background-color: yellow; width: 200px; border-color: #208000; font-weight: bold">
             Create a new doctor
@@ -25,6 +23,7 @@
 </div>
 
 <div>
+    <br>
     <p style="font-weight: bold">List of patients</p>
 </div>
 
@@ -75,6 +74,7 @@
 </div>
 
 <div>
+    <br>
     <p style="font-weight: bold">List of doctors</p>
 </div>
 
@@ -121,6 +121,7 @@
 </div>
 
 <div>
+    <br>
     <p style="font-weight: bold">List of appointments</p>
 </div>
 
@@ -174,6 +175,16 @@
         </table>
 
     </div>
+</div>
+
+<div>
+    <p>If you want to see the list of all appointments, including invalid appointments (with deleted patient or doctor):
+        <a th:href="@{/appointments/patient}">
+            <button style="background-color: greenyellow; width: 200px; border-color: #208000; font-weight: bold">
+                click here
+            </button>
+        </a>
+    </p>
 </div>
 
 </body>
