@@ -62,6 +62,11 @@ public class AppointmentService {
         return appointmentRepository.findFirstById(id);
     }
 
+    public List<Appointment> getAllByPatient(Long patientId) {
+        Patient patient = patientRepository.findFirstById(patientId);
+        return appointmentRepository.findAllByPatient(patient);
+    }
+
     public void update(Appointment appointment) {
         appointmentRepository.save(appointment);
     }

@@ -87,6 +87,16 @@ public class AppointmentController {
         return "appointmentsAll";
     }
 
+    // obsługa wyświetlania wizyt wybranego pacjenta
+    @GetMapping("/appointments/patient/{id}")
+    public String showAppointmentsByPatient(@PathVariable("id") Long patientId, Model model) {
+        List<Appointment> listOfAppointments = appointmentService.getAllByPatient(patientId);
+        model.addAttribute("listOfAppointments", listOfAppointments);
+        Patient patientToView = patientService.getFirstById(patientId);
+        model.addAttribute("patientToView", patientToView);
+        return "appointmentsByPatient";
+    }
+
     private String addAttributesToTheModelAndReturnMakeAppointment(Long id, Model model) {
         model.addAttribute("appointment", new AppointmentDto());
         Patient patientToView = patientService.getFirstById(id);

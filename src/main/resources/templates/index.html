@@ -149,12 +149,6 @@
                 <td th:text="${appointment.location}">Location</td>
                 <td th:text="${appointment.doctor.firstName + ' ' + appointment.doctor.lastName}">Doctor</td>
                 <td th:text="${appointment.patient.firstName + ' ' + appointment.patient.lastName}">Patient</td>
-
-<!--                <td th:if="${appointment.patient.firstName != null}"-->
-<!--                    th:text="${appointment.patient.firstName + ' ' + appointment.patient.lastName}">Patient</td>-->
-<!--                <td th:if="${appointment.patient.firstName == null}"-->
-<!--                    th:text="${'This patient has been deleted.'}">Patient</td>-->
-
                 <td>
                     <a th:href="@{'/appointment/' + ${appointment.id}}">
                         <button style="background-color: greenyellow; width: 175px; border-color: #208000; font-weight: bold">
